@@ -17,72 +17,74 @@ class CustomerSettingsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ListTile(
-                onTap: (){
+          child: Obx(() =>
+            Column(
+              children: [
+                ListTile(
+                  onTap: (){
 
-                },
-                title: Text("Profile"),
-                leading: Icon(Icons.person_outline),
-                trailing: Icon(Icons.arrow_forward_ios, size: 20,),
-              ),
-              Divider(),
-              ListTile(
-                onTap: (){
+                  },
+                  title: Text("Profile"),
+                  leading: Icon(Icons.person_outline),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 20,),
+                ),
+                Divider(),
+                ListTile(
+                  onTap: (){
 
-                },
-                title: Text("Change Language"),
-                leading: Icon(Icons.translate),
-                trailing: Text("Switch"),
-              ),
-              Divider(),
-              ListTile(
-                onTap: (){
+                  },
+                  title: Text("Change Language"),
+                  leading: Icon(Icons.translate),
+                  trailing: Text("Switch"),
+                ),
+                Divider(),
+                ListTile(
+                  onTap: (){
 
-                },
-                title: Text("Change Theme"),
-                leading: Icon(Icons.person_outline),
-                trailing: Text("Switch")
-              ),
-              Divider(),
-              ListTile(
-                onTap: (){
+                  },
+                  title: Text("Change Theme"),
+                  leading: Icon(Icons.person_outline),
+                  trailing: Text("Switch")
+                ),
+                Divider(),
+                ListTile(
+                  onTap: (){
 
-                },
-                title: Text("Terms & Condition"),
-                leading: Icon(Icons.logout),
-                trailing: Icon(Icons.arrow_forward_ios, size: 20,),
-              ),
-              Divider(),
-              ListTile(
-                onTap: (){
+                  },
+                  title: Text("Terms & Condition"),
+                  leading: Icon(Icons.logout),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 20,),
+                ),
+                Divider(),
+                ListTile(
+                  onTap: (){
 
-                },
-                title: Text("Privacy & Policy"),
-                leading: Icon(Icons.logout),
-                trailing: Icon(Icons.arrow_forward_ios, size: 20,),
-              ),
-              Divider(),
-              ListTile(
-                onTap: (){
+                  },
+                  title: Text("Privacy & Policy"),
+                  leading: Icon(Icons.logout),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 20,),
+                ),
+                Divider(),
+                controller.isLogin.value ==  true ? ListTile(
+                  onTap: (){
 
-                },
-                title: Text("Change Password"),
-                leading: Icon(Icons.lock),
-                trailing: Icon(Icons.arrow_forward_ios, size: 20,),
-              ),
-              Divider(),
-              ListTile(
-                onTap: (){
-                  Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
-                  controller.logout();
-                },
-                title: Text("Logout"),
-                leading: Icon(Icons.logout),
-                trailing: Icon(Icons.arrow_forward_ios, size: 20,),
-              ),
-            ],
+                  },
+                  title: Text("Change Password"),
+                  leading: Icon(Icons.lock),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 20,),
+                ) : Container(),
+                controller.isLogin.value ==  true ? Divider() : Container(),
+                controller.isLogin.value ==  true ? ListTile(
+                  onTap: (){
+                    Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
+                    controller.logout();
+                  },
+                  title: Text("Logout"),
+                  leading: Icon(Icons.logout),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 20,),
+                ) : Container(),
+              ],
+            ),
           ),
         ),
       ),

@@ -109,7 +109,11 @@ class CustomerDrawer extends StatelessWidget {
                 Get.toNamed(RouteName.CUSTOMER_SETTING_SCREEN);
               },
             ),
-            controller.isLogin == false ? AppButton(onPress: (){}, title: "Login"):Container()
+            controller.isLogin == false
+                ? AppButton(onPress: (){
+                  Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
+            }, title: "Login")
+                : Container()
           ],
         ),
       ),

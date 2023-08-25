@@ -15,8 +15,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox("cloth_app_cart");
-  Get.put(ProductController());
-  Get.put(CartController());
+  // Get.lazy(ProductController());
+  // Get.put(CartController());
   runApp(const MyApp());
 }
 
