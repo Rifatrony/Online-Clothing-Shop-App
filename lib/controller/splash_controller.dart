@@ -26,18 +26,22 @@ class SplashController extends GetxController {
     final name = prefs.getString('name');
     print("Name is =================> $name");
 
-    if (accessToken != null && role == "user") {
-      Timer(const Duration(seconds: 3), () {
-        Get.offAllNamed(RouteName.CUSTOMER_DASHBOARD_SCREEN);
-      });
-    }
-    else if (accessToken != null && role == "admin") {
-      Timer(const Duration(seconds: 2), () {
-        Get.snackbar("Success", "Go to admin profile page");
-      });
-    }
-    else{
-      Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
-    }
+    Timer(const Duration(seconds: 3), () {
+      Get.offAllNamed(RouteName.CUSTOMER_DASHBOARD_SCREEN);
+    });
+
+    // if (accessToken != null && role == "user") {
+    //   Timer(const Duration(seconds: 3), () {
+    //     Get.offAllNamed(RouteName.CUSTOMER_DASHBOARD_SCREEN);
+    //   });
+    // }
+    // else if (accessToken != null && role == "admin") {
+    //   Timer(const Duration(seconds: 2), () {
+    //     Get.snackbar("Success", "Go to admin profile page");
+    //   });
+    // }
+    // else{
+    //   Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
+    // }
   }
 }

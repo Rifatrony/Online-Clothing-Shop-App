@@ -17,6 +17,8 @@ class LoginController extends GetxController{
   FocusNode emailOrPhoneFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
 
+  RxBool isLogin = false.obs;
+
   RxBool isLoading = false.obs;
   RxBool isPasswordHidden = true.obs;
   RxString name = 'No name'.obs;
@@ -53,6 +55,7 @@ class LoginController extends GetxController{
           if (value['message'] == "Login Successful" && value["role"] == "user") {
             Get.offAllNamed(RouteName.CUSTOMER_DASHBOARD_SCREEN);
             isLoading(false);
+            isLogin.value = true;
             Get.snackbar("Success", "Login Successful");
             loginRepo.saveUser(value["access_token"],);
             loginRepo.saveUserRole(value["role"],);
