@@ -211,9 +211,9 @@ class _CustomerCheckoutScreenState extends State<CustomerCheckoutScreen> {
                           ),
                         ),
                       ),
-                      TitleAndRow(title: "Delivery Charge", value: orderController.selectedCategory!.deliveryCharge.toString() ),
-                      TitleAndRow(title: "Delivery Address", value: orderController.selectedCategory!.deliveryAddress.toString()),
-                      TitleAndRow(title: "Payment type", value: orderController.selectedIndex == 1 ? "Cash on Delivery" : "Stripe"),
+                      Obx(()=> orderController.isLoading.value? CircularProgressIndicator(): TitleAndRow(title: "Delivery Charge", value: orderController.selectedCategory!.deliveryCharge.toString().isEmpty ? "" : orderController.selectedCategory!.deliveryCharge.toString() )),
+                      Obx(()=> orderController.isLoading.value? CircularProgressIndicator(): TitleAndRow(title: "Delivery Address", value: orderController.selectedCategory!.deliveryAddress.toString())),
+                      Obx(()=> orderController.isLoading.value? CircularProgressIndicator(): TitleAndRow(title: "Payment type", value: orderController.selectedIndex == 1 ? "Cash on Delivery" : "Stripe")),
 
                     ],
                   ),
