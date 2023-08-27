@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloth_shop_app/controller/Customer/OrderController.dart';
 import 'package:cloth_shop_app/controller/Customer/cart_controller.dart';
 import 'package:cloth_shop_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class CustomerCartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     CartController cartController = Get.find();
+    OrderController orderController = Get.find();
 
     return Scaffold(
       appBar: AppBar(
@@ -151,6 +153,12 @@ class CustomerCartScreen extends StatelessWidget {
               },
             ),
 
+            AppButton(
+              onPress: (){
+                orderController.checkLogin();
+              },
+              title: "Checkout",
+            ),
           ],
         ),
       ),

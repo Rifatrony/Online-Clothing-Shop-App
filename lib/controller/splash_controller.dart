@@ -25,6 +25,7 @@ class SplashController extends GetxController {
     final role = prefs.getString('role');
     final name = prefs.getString('name');
     print("Name is =================> $name");
+    print("Token is =================> $accessToken");
 
     Timer(const Duration(seconds: 3), () {
       Get.offAllNamed(RouteName.CUSTOMER_DASHBOARD_SCREEN);

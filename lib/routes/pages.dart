@@ -1,5 +1,6 @@
 import 'package:cloth_shop_app/routes/route_name.dart';
 import 'package:cloth_shop_app/views/Customer/customer_cart_screen.dart';
+import 'package:cloth_shop_app/views/Customer/customer_checkout_screen.dart';
 import 'package:cloth_shop_app/views/Customer/customer_dashboard_screen.dart';
 import 'package:cloth_shop_app/views/Customer/customer_login_screen.dart';
 import 'package:cloth_shop_app/views/Customer/customer_order_screen.dart';
@@ -8,6 +9,7 @@ import 'package:cloth_shop_app/views/Customer/customer_registration_screen.dart'
 import 'package:cloth_shop_app/views/Customer/customer_settings_screen.dart';
 import 'package:get/get.dart';
 
+import '../binding/Customer/product_details_binding.dart';
 import '../views/Screens/splash_screen.dart';
 
 class Pages {
@@ -42,11 +44,17 @@ class Pages {
         var id = Get.parameters['id'];
         return CustomerProductDetailsScreen(index: int.parse(index!), id: id!);
       },
+      binding: ProductDetailsBinding(),
     ),
 
     GetPage(
       name: RouteName.CUSTOMER_CART_SCREEN,
       page: ()=> const CustomerCartScreen(),
+    ),
+
+    GetPage(
+      name: RouteName.CUSTOMER_CHECKOUT_SCREEN,
+      page: ()=> const CustomerCheckoutScreen(),
     ),
 
     GetPage(

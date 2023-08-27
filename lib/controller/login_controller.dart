@@ -22,13 +22,15 @@ class LoginController extends GetxController{
   RxBool isLoading = false.obs;
   RxBool isPasswordHidden = true.obs;
   RxString name = 'No name'.obs;
-  RxString phone = 'No number found'.obs;
+  RxInt phone = 0.obs;
+  RxString accessToken = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
     getName();
     getPhone();
+    getToken();
   }
 
   Future<void> loginUser() async {
@@ -61,6 +63,11 @@ class LoginController extends GetxController{
             loginRepo.saveUserRole(value["role"],);
             loginRepo.saveUserName(value['user']['name'],);
             loginRepo.saveUserPhone(value['user']['phone'],);
+            getName();
+            getPhone();
+            getToken();
+            emailOrPhoneController.text == '';
+            passwordController.text == '';
             update();
           }
 
@@ -83,7 +90,7 @@ class LoginController extends GetxController{
             isLoading(false);
             Get.snackbar("Success", "Admin Login Successful");
             // loginRepo.saveUser(value["access_token"], value["role"], value['user']['name'], value['user']['phone']);
-            print("Name is ========================== "+value['user']['name']+"\n\n ${value['role']}" );
+            print("${"Name is ========================== "+value['user']['name']}\n\n ${value['role']}" );
             update();
           }
 
@@ -110,14 +117,27 @@ class LoginController extends GetxController{
     }
   }
 
+  // Future<String?> getToken() async {
+  //   SharedPreferences sp = await SharedPreferences.getInstance();
+  //   token.value = sp.getString("access_token")!;
+  //   print("Token is : ${token.value}");
+  //   return token.value;
+  // }
+  Future<void> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    accessToken.value = prefs.getString('access_token')!;
+  }
+
+
   Future<String?> getName() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     name.value = sp.getString("name")!;
     return name.value;
   }
-  Future<String?> getPhone() async {
+
+  Future<int?> getPhone() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    phone.value = sp.getString("phone")!;
+    phone.value = sp.getInt("phone")!;
     return phone.value;
   }
 

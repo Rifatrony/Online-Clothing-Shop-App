@@ -1,4 +1,7 @@
+import 'package:cloth_shop_app/controller/Customer/OrderController.dart';
+import 'package:cloth_shop_app/controller/Customer/brand_controller.dart';
 import 'package:cloth_shop_app/controller/login_controller.dart';
+import 'package:cloth_shop_app/controller/splash_controller.dart';
 import 'package:cloth_shop_app/init/init_controller.dart';
 import 'package:cloth_shop_app/routes/pages.dart';
 import 'package:cloth_shop_app/routes/route_name.dart';
@@ -15,8 +18,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox("cloth_app_cart");
-  // Get.lazy(ProductController());
-  // Get.put(CartController());
+  Get.put(SplashController());
+  Get.put(LoginController());
+  Get.put(BrandController());
+  Get.put(ProductController());
+  Get.put(CartController());
+  Get.put(OrderController());
   runApp(const MyApp());
 }
 

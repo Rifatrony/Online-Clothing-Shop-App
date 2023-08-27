@@ -98,7 +98,7 @@ class CustomerLoginScreen extends GetView<LoginController> {
                     // Forget password section
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10,),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10,),
                       child: Text(
                         "Forget Password",
                         textAlign: TextAlign.right,

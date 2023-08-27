@@ -13,6 +13,7 @@ class CartController extends GetxController{
   RxString price = "".obs;
   RxBool isAddedToCart = false.obs;
   RxInt quantity = 1.obs;
+  RxBool isProductAvailableOnCart = false.obs;
 
   List<Map<String, dynamic>> items = [];
 
@@ -32,6 +33,8 @@ class CartController extends GetxController{
   Future<void> createItem (Map<String, dynamic> newItem) async {
     final clothAppCartBox = await Hive.openBox("cloth_app_cart");
     await clothAppCartBox.add(newItem);
+    isProductAvailableOnCart.value = true;
+    update();
     // refreshCart();
     print("Total data is ${clothAppCartBox.length}");
   }

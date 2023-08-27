@@ -1,3 +1,4 @@
+import 'package:cloth_shop_app/controller/Customer/OrderController.dart';
 import 'package:cloth_shop_app/controller/Customer/brand_controller.dart';
 import 'package:cloth_shop_app/controller/Customer/cart_controller.dart';
 import 'package:cloth_shop_app/controller/Customer/customer_product_details_controller.dart';
@@ -16,5 +17,6 @@ class InitController implements Bindings{
     Get.lazyPut(() => BrandController());
     Get.lazyPut(() => ProductController());
     Get.lazyPut(() => CartController());
+    Get.lazyPut(() => OrderController());
   }
 }

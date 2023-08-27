@@ -17,7 +17,7 @@ class CustomerDashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CustomerProductDetailsController controller = Get.find();
+    // CustomerProductDetailsController controller = Get.find();
     BrandController brandController = Get.find();
     ProductController productController = Get.find();
 
@@ -28,7 +28,6 @@ class CustomerDashboardScreen extends StatelessWidget {
       body: RefreshIndicator(
         onRefresh: _refresh,
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -8,15 +8,18 @@ import 'package:cloth_shop_app/data/api/base_api_services.dart';
 import 'package:cloth_shop_app/data/error/AppException.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NetworkApiServices extends BaseApiServices {
   @override
   Future getApi(String url) async {
     dynamic responseJson;
     var uri = Uri.parse(url);
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('access_token');
 
     try {
-      var token = "await UserPrefernceController().getAccessToken()";
+
       final response = await http.get(uri, headers: {
         'Authorization': 'Bearer $token'
       }).timeout(const Duration(seconds: 20));

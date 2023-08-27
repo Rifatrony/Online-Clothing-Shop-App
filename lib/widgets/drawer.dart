@@ -31,9 +31,9 @@ class CustomerDrawer extends StatelessWidget {
 
               ),
               accountEmail: Text(
-                controller.phone.value.isEmpty
+                controller.phone.value == null
                     ? "Login to get phone number"
-                    : controller.phone.value.toString(),
+                    : "0${controller.phone.value}",
                 style: GoogleFonts.lato(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -45,13 +45,13 @@ class CustomerDrawer extends StatelessWidget {
                   child: Image.asset("assets/images/no_image.jpg", height: 40, width: 40, fit: BoxFit.cover,),
                 ),
               ),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/no_image.jpg"), fit: BoxFit.cover),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home_outlined),
-              title: Text("Home"),
+              leading: const Icon(Icons.home_outlined),
+              title: const Text("Home"),
               onTap: (){
                 Navigator.pop(context);
                 Get.toNamed(RouteName.CUSTOMER_DASHBOARD_SCREEN);
@@ -93,26 +93,30 @@ class CustomerDrawer extends StatelessWidget {
                 Get.toNamed(RouteName.CUSTOMER_CART_SCREEN);
               },
             ),
-            controller.isLogin.value == true ? ListTile(
-              leading: Icon(Icons.list_alt),
-              title: Text("Order"),
+            controller.accessToken.value != ""
+                ? ListTile(
+              leading: const Icon(Icons.list_alt),
+              title: const Text("Order"),
               onTap: (){
                 Navigator.pop(context);
                 Get.toNamed(RouteName.CUSTOMER_ORDER_SCREEN);
               },
             ) : Container(),
             ListTile(
-              leading: Icon(Icons.settings_outlined),
-              title: Text("Settings"),
+              leading: const Icon(Icons.settings_outlined),
+              title: const Text("Settings"),
               onTap: (){
                 Navigator.pop(context);
                 Get.toNamed(RouteName.CUSTOMER_SETTING_SCREEN);
               },
             ),
-            controller.isLogin == false
-                ? AppButton(onPress: (){
-                  Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
-            }, title: "Login")
+            controller.accessToken == ''
+                ? AppButton(
+                    onPress: () async {
+                      Navigator.pop(context);
+                      await Get.toNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
+                    }, title: "Login",
+                  )
                 : Container()
           ],
         ),

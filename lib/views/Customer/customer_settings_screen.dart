@@ -10,9 +10,10 @@ class CustomerSettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController controller = Get.find<LoginController>();
+    String? token = controller.accessToken.value;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: const Text("Settings"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -39,8 +40,7 @@ class CustomerSettingsScreen extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  onTap: (){
-
+                  onTap: ()  {
                   },
                   title: Text("Change Theme"),
                   leading: Icon(Icons.person_outline),
@@ -65,7 +65,7 @@ class CustomerSettingsScreen extends StatelessWidget {
                   trailing: Icon(Icons.arrow_forward_ios, size: 20,),
                 ),
                 Divider(),
-                controller.isLogin.value ==  true ? ListTile(
+                controller.accessToken.value != "" ? ListTile(
                   onTap: (){
 
                   },
@@ -73,8 +73,8 @@ class CustomerSettingsScreen extends StatelessWidget {
                   leading: Icon(Icons.lock),
                   trailing: Icon(Icons.arrow_forward_ios, size: 20,),
                 ) : Container(),
-                controller.isLogin.value ==  true ? Divider() : Container(),
-                controller.isLogin.value ==  true ? ListTile(
+                controller.accessToken.value != "" ? Divider() : Container(),
+                controller.accessToken.value != "" ? ListTile(
                   onTap: (){
                     Get.offAllNamed(RouteName.CUSTOMER_LOGIN_SCREEN);
                     controller.logout();

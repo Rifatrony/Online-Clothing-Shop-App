@@ -8,4 +8,5 @@ class RemoteDataSource{
   static const latestProductUrl = '$baseUrl/product/latest-product';
   static const allProductUrl = '$baseUrl/customer/product';
   static const productDetailsUrl = '$baseUrl/customer/product/';
+  static const deliveryChargeUrl = '$baseUrl/customer/delivery-method';
 }

@@ -11,6 +11,7 @@ abstract class RouteName {
   static String getProductDetails(int index, String id) => '${RouteName.CUSTOMER_PRODUCT_DETAILS_SCREEN}?index=$index&id=$id';
 
   static const CUSTOMER_CART_SCREEN = '/customer-cart-screen';
+  static const CUSTOMER_CHECKOUT_SCREEN = '/customer-checkout-screen';
   static const CUSTOMER_SETTING_SCREEN = '/customer-settings-screen';
   static const CUSTOMER_ORDER_SCREEN = '/customer-order-screen';
 // Add more route names here

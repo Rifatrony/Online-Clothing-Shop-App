@@ -26,9 +26,9 @@ class LoginRepo {
     return true;
   }
 
-  Future<bool> saveUserPhone(String phone) async {
+  Future<bool> saveUserPhone(int phone) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.setString("phone", phone);
+    sp.setInt("phone", phone);
     return true;
   }
 
